@@ -10,6 +10,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,7 +36,14 @@ fun TodoScreen(
         viewModel.setCategoryId(categoryId)
     }
 
-    val todos by viewModel.todos.collectAsState()
+    val originalTodos by viewModel.todos.collectAsState()
+    var sortByPriority by remember { mutableStateOf(false) }
+    val todos = if (sortByPriority) {
+        originalTodos.sortedBy { it.priority }
+    } else {
+        originalTodos
+    }
+
     var showAddDialog by remember { mutableStateOf(false) }
     var newTodoText by remember { mutableStateOf("") }
     var selectedPriority by remember { mutableStateOf(Priority.Medium) }
@@ -54,7 +62,9 @@ fun TodoScreen(
         topBar = {
             val categoryName by viewModel.categoryName.collectAsState()
 
+
             TopAppBar(
+
                 title = {
                     Column {
                         Text(
@@ -72,7 +82,7 @@ fun TodoScreen(
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
-                }
+                } ,
             )
         },
         floatingActionButton = {
