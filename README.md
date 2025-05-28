@@ -16,9 +16,10 @@ TaskBox is a simple and intuitive task management Android app built with Kotlin.
 
 ## Demo
 
-<img src="app/docs/images/demo1.png" width="300" />
-<img src="app/docs/images/demo2.jpg" width="300" />
-<img src="app/docs/images/demo3.png" width="300" />
+<img src="app/docs/images/demo1.png" alt="TaskBox Demo 1" width="300" />
+<img src="app/docs/images/demo2.jpg" alt="TaskBox Demo 2" width="300" />
+<img src="app/docs/images/demo3.png" alt="TaskBox Demo 3" width="300" />
+
 
 ---
 
